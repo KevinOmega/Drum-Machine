@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useGlobalContext } from "./context";
 
 const Pad = ({ keyCode, keyTrigger, id, url }) => {
   const { volume, enabled, setCurrentId } = useGlobalContext();
   const [isClicked, setIsClicked] = useState(false);
 
-  const playSound = () => {
+  const playSound = useCallback(() => {
     setIsClicked(true);
     setCurrentId(id);
     const sound = document.getElementById(keyCode);
@@ -15,18 +15,27 @@ const Pad = ({ keyCode, keyTrigger, id, url }) => {
     setTimeout(() => setIsClicked(false), 300);
 
     return () => clearTimeout(() => setIsClicked(false), 300);
-  };
+  }, [id, keyCode, setCurrentId, volume]);
 
-  const handleKeyPress = (e) => {
-    if (e.keyCode === keyCode) {
-      playSound();
-    }
-  };
+  const handleKeyPress = useCallback(
+    (e) => {
+      if (e.keyCode === keyCode) {
+        playSound();
+      }
+    },
+    [keyCode, playSound]
+  );
 
   useEffect(() => {
-    window.addEventListener("keydown", handleKeyPress);
+    if (enabled) {
+      window.addEventListener("keydown", handleKeyPress);
+    }
+
+    if (!enabled) {
+      window.removeEventListener("keydown", handleKeyPress);
+    }
     return () => window.removeEventListener("keydown", handleKeyPress);
-  }, []);
+  }, [enabled, handleKeyPress]);
 
   if (enabled) {
     return (
