@@ -1,9 +1,9 @@
 :root {
-  --primary: #ffca84;
-  --backgroundColor: #ff9100;
-  --secondary: #2200ff;
-  --pink: #ff00dd;
-  --yellow: #ddff00;
+  --primary: #a3a3a3;
+  --backgroundColor: #a3f4ff;
+  --secondary: #124b8b;
+  --pink: #ffffff;
+  --yellow: #2a6e40;
 }
 
 body {
@@ -26,10 +26,10 @@ code {
   padding: 2rem;
   background: var(--primary);
   margin: 13% auto 3rem;
-  border: solid 2px var(--secondary);
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1rem;
+  box-shadow: 0.5rem 0.5rem 1px var(--secondary);
 }
 
 @media screen and (max-width: 800px) {
@@ -47,11 +47,11 @@ code {
 
 #drum-pad {
   background: var(--backgroundColor);
-  border: solid 2px #2200ff;
   color: var(--secondary);
   text-align: center;
   padding: 1rem;
   cursor: pointer;
+  box-shadow: 0.5rem 0.5rem 1px var(--secondary);
 }
 
 .active-style {
@@ -108,6 +108,8 @@ code {
   align-items: center;
   margin: auto;
   width: 40%;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 
 #volume {
