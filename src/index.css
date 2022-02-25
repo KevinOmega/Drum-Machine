@@ -1,0 +1,116 @@
+:root {
+  --primary: #ffca84;
+  --backgroundColor: #ff9100;
+  --secondary: #2200ff;
+  --pink: #ff00dd;
+  --yellow: #ddff00;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: var(--backgroundColor);
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+#drum-machine {
+  width: 50%;
+  padding: 2rem;
+  background: var(--primary);
+  margin: 13% auto 3rem;
+  border: solid 2px var(--secondary);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+@media screen and (max-width: 800px) {
+  #drum-machine {
+    grid-template-columns: 1fr;
+  }
+}
+
+.drum-pad {
+  display: grid;
+  margin: 1rem;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+}
+
+#drum-pad {
+  background: var(--backgroundColor);
+  border: solid 2px #2200ff;
+  color: var(--secondary);
+  text-align: center;
+  padding: 1rem;
+  cursor: pointer;
+}
+
+.active-style {
+  transform: scale(0.95);
+}
+
+/* Display */
+
+#display {
+  display: grid;
+  text-align: center;
+  gap: 1rem;
+}
+
+#display label {
+  font-family: "Times New Roman", Times, serif;
+  color: var(--pink);
+}
+
+.interruptor {
+  background: var(--yellow);
+  height: 1.5rem;
+  width: 3rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: auto;
+  cursor: pointer;
+}
+
+.interruptor-btn {
+  background-color: var(--backgroundColor);
+  width: 1.3rem;
+  height: 1.3rem;
+  border: transparent;
+  margin: auto;
+}
+
+.off {
+  grid-area: 1/2;
+}
+
+.on {
+  grid-area: 0/1;
+}
+
+.type {
+  background: var(--yellow);
+  height: 2rem;
+  color: var(--pink);
+  font-size: 1rem;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  width: 40%;
+}
+
+#volume {
+  width: 70%;
+  margin: auto;
+}
